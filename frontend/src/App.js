@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from "axios";
 import PaymentContainer from './components/paymentContainer.jsx';
+import Summary from './components/summary.jsx';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
 
     <div className="App">
       <PaymentContainer />
+      <Summary />
     </div>
   );
   }

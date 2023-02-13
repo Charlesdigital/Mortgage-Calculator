@@ -8,13 +8,14 @@ function paymentContainer() {
             <label className = 'MortgageAmount'>
             Mortgage Amount
             </label>
-            <span>$</span>
+            <span className='icon'>$</span>
             <input type="text"></input>
         </div>
         <div className='rowGroup'>
             <label className = 'InterestRate'>
             Interest Rate
             </label>
+            <span className='icon'>%</span>
             <input type="text"></input>
         </div>
         <div className='rowGroup'>
@@ -27,12 +28,18 @@ function paymentContainer() {
             <label className = 'Payment Frequency'>
             Payment Frequency
             </label>
+            <select name="frequency">
+    <option value="weekly">Weekly</option>
+    <option value="bi-weekly">Bi-weekly</option>
+    <option value="monthly">Monthly</option>
+
+  </select>
         </div>
         <div className='rowGroup'>
             <label className = 'Term'>
             Term
             </label>
-            <select name="cars" id="cars">
+            <select name="Terms">
     <option value="1 Year">1 Year</option>
     <option value="2 Year">2 Year</option>
     <option value="3 Year">3 Year</option>
