@@ -11,7 +11,7 @@ function PaymentContainer() {
     amortizationPeriod: "",
     paymentFrequency: "",
     term: "",
-});
+  });
 
   function calculate() {
     // setInterest(7)
@@ -19,36 +19,23 @@ function PaymentContainer() {
   }
 
   const handleChange = (e) => {
-
-    // const {mortgageValue, interestRateValue, amortizationPeriodValue} = e.target.value
-
+    //grab the name and input value
     const name = e.target.name;
     const value = e.target.value;
 
-    // const mortgageValue = e.target.value.mortgageValue;
-    // const interestRateValue = e.target.value.interestRateValue;
-    // const amortizationPeriodValue = e.target.value.amortizationPeriodValue;
     console.log("af234234234", name, value);
 
-
-    // console.log(mortgageValue, interestRateValue, amortizationPeriodValue);
-// console.log(mortgageValue)
     setDetails((prev) => {
-        return {...prev,
-            [name]: value,
-
-            // [details.paymentFrequency]: mortgageValue
-            // [details.term]: mortgageValue
-
-        }
-    })
+      return { ...prev, [name]: value };
+    });
   };
 
-//   console.log("after", details);
 
-  const handleSubmit = () => {
-    console.log("after2", details)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("after2", details);
+  };
+  console.log("test1",details.mortgage)
 
   //things to do:\
   //add down payment
@@ -59,11 +46,12 @@ function PaymentContainer() {
 
   return (
     <div>
+        <form onSubmit={handleSubmit}>
       <h1> Payment Plan</h1>
       <div className="rowGroup">
         <label className="MortgageAmount">Mortgage Amount</label>
         <span className="icon">$</span>
-        <input type="text" name="mortgage" onChange={handleChange}></input>
+        <input type="number" min="1" name="mortgage" onChange={handleChange} required></input>
       </div>
       <div className="rowGroup">
         <label className="InterestRate"></label>
@@ -73,6 +61,7 @@ function PaymentContainer() {
           max="100"
           name="interestRate"
           onChange={handleChange}
+          required
         ></input>
       </div>
       <div className="rowGroup">
@@ -80,12 +69,14 @@ function PaymentContainer() {
         <input
           type="number"
           name="amortizationPeriod"
+          min="1"
           onChange={handleChange}
+          required
         ></input>
       </div>
       <div className="rowGroup">
-        <label className="paymentFrequency">Payment Frequency</label>
-        <select name="frequency">
+        <label className="payFrequency">Payment Frequency</label>
+        <select name="paymentFrequency" onChange={handleChange}>
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-weekly</option>
           <option value="monthly">Monthly</option>
@@ -93,7 +84,7 @@ function PaymentContainer() {
       </div>
       <div className="rowGroup">
         <label className="Term">Term</label>
-        <select name="Terms">
+        <select name="term" onChange={handleChange}>
           <option value="1 Year">1 Year</option>
           <option value="2 Year">2 Year</option>
           <option value="3 Year">3 Year</option>
@@ -106,13 +97,17 @@ function PaymentContainer() {
           <option value="10 Year">10 Year</option>
         </select>{" "}
       </div>
-      <button
+      {/* <button
         onClick={() => {
-            handleSubmit();
+          handleSubmit();
         }}
       >
         Calculate
-      </button>
+      </button> */}
+
+      <input type="submit" value="Calculate" />
+
+      </form>
     </div>
   );
 }
