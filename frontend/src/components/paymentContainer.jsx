@@ -1,23 +1,57 @@
-import React from "react";
+import {useState} from "react";
 
-function paymentContainer() {
+function PaymentContainer() {
 
-  const calculate = () => {
-    console.log("hello");
-  }
+//   const calculate = () => {
+// return 4
+// }
+// const [interest, setInterest] = useState(1);
+const [details, setDetails ] = useState({
+ mortgage: '',
+ interestRate:'',
+ amortizationPeriod:'',
+ paymentFrequency:'',
+ term: '',
+});
+
+
+function calculate() {
+    // setInterest(7)
+ return 1
+}
+
+const handleChange = (e) => {
+    console.log(e.target.value)
+    // const {mortgage, interestRate, amortizationPeriod, paymentFrequency, term} = e.target
+    const mortgage = e.target.value.mortgage;
+    const interestRate = e.target.interestRate;
+    // const amortizationPeriod = e.target.amortizationPeriod;
+    console.log(mortgage)
+
+
+}
+
+
+
+//things to do:\
+//add down payment
+//1. Terms
+//2. Amortization Period
+//3. Mortgage Payment
+//4 PrePayment
 
   return (
     <div>
       <h1> Payment Plan</h1>
       <div className="rowGroup">
-        <label className="MortgageAmount">Mortgage Amount</label>
+        <label className="MortgageAmount" >Mortgage Amount</label>
         <span className="icon">$</span>
-        <input type="text"></input>
+        <input type="text"  name="mortgage" onChange={handleChange}></input>
       </div>
       <div className="rowGroup">
-        <label className="InterestRate">Interest Rate</label>
+        <label className="InterestRate"></label>
         <span className="icon">%</span>
-        <input type="text"></input>
+        <input type="text" name ="interestRate" onChange={handleChange}></input>
       </div>
       <div className="rowGroup">
         <label className="AmortizationPeriod">Amortization Period</label>
@@ -46,9 +80,12 @@ function paymentContainer() {
           <option value="10 Year">10 Year</option>
         </select>{" "}
       </div>
-      <button onClick={calculate}>Calculate</button>
+      <button onClick={() => {
+{calculate()}}
+
+        }>Calculate</button>
     </div>
   );
 }
 
-export default paymentContainer;
+export default PaymentContainer;
