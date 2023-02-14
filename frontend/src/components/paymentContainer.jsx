@@ -1,64 +1,90 @@
-import {useState} from "react";
+import { useState } from "react";
 
 function PaymentContainer() {
-
-//   const calculate = () => {
-// return 4
-// }
-// const [interest, setInterest] = useState(1);
-const [details, setDetails ] = useState({
- mortgage: '',
- interestRate:'',
- amortizationPeriod:'',
- paymentFrequency:'',
- term: '',
+  //   const calculate = () => {
+  // return 4
+  // }
+  // const [interest, setInterest] = useState(1);
+  const [details, setDetails] = useState({
+    mortgage: "",
+    interestRate: "",
+    amortizationPeriod: "",
+    paymentFrequency: "",
+    term: "",
 });
 
-
-function calculate() {
+  function calculate() {
     // setInterest(7)
- return 1
-}
+    return 1;
+  }
 
-const handleChange = (e) => {
-    console.log(e.target.value)
-    // const {mortgage, interestRate, amortizationPeriod, paymentFrequency, term} = e.target
-    const mortgage = e.target.value.mortgage;
-    const interestRate = e.target.interestRate;
-    // const amortizationPeriod = e.target.amortizationPeriod;
-    console.log(mortgage)
+  const handleChange = (e) => {
+
+    // const {mortgageValue, interestRateValue, amortizationPeriodValue} = e.target.value
+
+    const name = e.target.name;
+    const value = e.target.value;
+
+    // const mortgageValue = e.target.value.mortgageValue;
+    // const interestRateValue = e.target.value.interestRateValue;
+    // const amortizationPeriodValue = e.target.value.amortizationPeriodValue;
+    console.log("af234234234", name, value);
 
 
-}
+    // console.log(mortgageValue, interestRateValue, amortizationPeriodValue);
+// console.log(mortgageValue)
+    setDetails((prev) => {
+        return {...prev,
+            [name]: value,
 
+            // [details.paymentFrequency]: mortgageValue
+            // [details.term]: mortgageValue
 
+        }
+    })
+  };
 
-//things to do:\
-//add down payment
-//1. Terms
-//2. Amortization Period
-//3. Mortgage Payment
-//4 PrePayment
+//   console.log("after", details);
+
+  const handleSubmit = () => {
+    console.log("after2", details)
+  }
+
+  //things to do:\
+  //add down payment
+  //1. Terms
+  //2. Amortization Period
+  //3. Mortgage Payment
+  //4 PrePayment
 
   return (
     <div>
       <h1> Payment Plan</h1>
       <div className="rowGroup">
-        <label className="MortgageAmount" >Mortgage Amount</label>
+        <label className="MortgageAmount">Mortgage Amount</label>
         <span className="icon">$</span>
-        <input type="text"  name="mortgage" onChange={handleChange}></input>
+        <input type="text" name="mortgage" onChange={handleChange}></input>
       </div>
       <div className="rowGroup">
         <label className="InterestRate"></label>
         <span className="icon">%</span>
-        <input type="text" name ="interestRate" onChange={handleChange}></input>
+        <input
+          type="number"
+          max="100"
+          name="interestRate"
+          onChange={handleChange}
+        ></input>
       </div>
       <div className="rowGroup">
         <label className="AmortizationPeriod">Amortization Period</label>
-        <input type="text"></input>
+        <input
+          type="number"
+          name="amortizationPeriod"
+          onChange={handleChange}
+        ></input>
       </div>
       <div className="rowGroup">
-        <label className="Payment Frequency">Payment Frequency</label>
+        <label className="paymentFrequency">Payment Frequency</label>
         <select name="frequency">
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-weekly</option>
@@ -80,10 +106,13 @@ const handleChange = (e) => {
           <option value="10 Year">10 Year</option>
         </select>{" "}
       </div>
-      <button onClick={() => {
-{calculate()}}
-
-        }>Calculate</button>
+      <button
+        onClick={() => {
+            handleSubmit();
+        }}
+      >
+        Calculate
+      </button>
     </div>
   );
 }
