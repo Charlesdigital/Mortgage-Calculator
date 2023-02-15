@@ -1,10 +1,8 @@
 import { useState } from "react";
+import Summary from './summary';
 
 function PaymentContainer() {
-  //   const calculate = () => {
-  // return 4
-  // }
-  // const [interest, setInterest] = useState(1);
+
   const [details, setDetails] = useState({
     mortgage: "",
     interestRate: "",
@@ -32,8 +30,9 @@ function PaymentContainer() {
 
 
   const handleSubmit = (e) => {
+    //to avoid rerendering the whole page
     e.preventDefault();
-    console.log("after2", details);
+    // console.log("after2", details);
   };
   console.log("test1",details.mortgage)
 
@@ -76,25 +75,27 @@ function PaymentContainer() {
       </div>
       <div className="rowGroup">
         <label className="payFrequency">Payment Frequency</label>
-        <select name="paymentFrequency" onChange={handleChange}>
-          <option value="weekly">Weekly</option>
-          <option value="bi-weekly">Bi-weekly</option>
-          <option value="monthly">Monthly</option>
+        <select name="paymentFrequency" min="1" onChange={handleChange}>
+          <option value="0"></option>
+          <option value="7">Weekly</option>
+          <option value="14">Bi-weekly</option>
+          <option value="30">Monthly</option>
         </select>
       </div>
       <div className="rowGroup">
         <label className="Term">Term</label>
         <select name="term" onChange={handleChange}>
-          <option value="1 Year">1 Year</option>
-          <option value="2 Year">2 Year</option>
-          <option value="3 Year">3 Year</option>
-          <option value="4 Year">4 Year</option>
-          <option value="5 Year">5 Year</option>
-          <option value="6 Year">6 Year</option>
-          <option value="7 Year">7 Year</option>
-          <option value="8 Year">8 Year</option>
-          <option value="9 Year">9 Year</option>
-          <option value="10 Year">10 Year</option>
+          <option value="0"></option>
+          <option value="1 ">1 Year</option>
+          <option value="2">2 Year</option>
+          <option value="3">3 Year</option>
+          <option value="4">4 Year</option>
+          <option value="5">5 Year</option>
+          <option value="6">6 Year</option>
+          <option value="7">7 Year</option>
+          <option value="8">8 Year</option>
+          <option value="9">9 Year</option>
+          <option value="10">10 Year</option>
         </select>{" "}
       </div>
       {/* <button
@@ -108,6 +109,7 @@ function PaymentContainer() {
       <input type="submit" value="Calculate" />
 
       </form>
+      <Summary details={details} />
     </div>
   );
 }

@@ -1,6 +1,43 @@
 import React from "react";
 
-function summary() {
+function summary(props) {
+
+    console.log("props", props)
+    console.log("props2", props.details.mortgage)
+
+
+    const {mortgage, interestRate, amortizationPeriod, paymentFrequency, term} = props.details;
+
+
+    const mortgageTerm = mortgage*term
+    console.log("props4", mortgageTerm)
+
+    // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1].
+
+//parseInt to avoid concatenation
+// const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
+const pay = mortgage* (parseInt(interestRate)*(Math.pow(1 + parseInt(interestRate), amortizationPeriod)))/5
+
+    // function termPayments() {
+    // //    return  mortgage*(interestRate(1 + interestRate)^amortizationPeriod) / ((1 + interestRate)^amortizationPeriod - 1)
+    // return mortgage*(interestRate(1 + interestRate))
+    // }
+
+    console.log("duh", pay)
+    console.log("duh2", interestRate)
+    console.log("duh3", mortgage)
+
+    // console.log("chill", termPayments)
+    // Here’s a breakdown of each of the variables:
+
+    // M = Total monthly payment
+    // P = The total amount of your loan
+    // I = Your interest rate, as a monthly percentage
+    // N = The total amount of months in your timeline for paying off your mortgage
+
+
+
+
   return (
     <div>
       <table className='summaryTable'>
@@ -15,8 +52,8 @@ function summary() {
         <tbody>
           <tr>
             <td>Number of Payments</td>
-            <td>5</td>
-            <td>200</td>
+            <td>{mortgage}</td>
+            <td>{mortgageTerm}</td>
           </tr>
 
           <tr>
