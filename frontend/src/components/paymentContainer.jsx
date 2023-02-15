@@ -77,9 +77,9 @@ function PaymentContainer() {
         <label className="payFrequency">Payment Frequency</label>
         <select name="paymentFrequency" min="1" onChange={handleChange}>
           <option value="0"></option>
-          <option value="7">Weekly</option>
-          <option value="14">Bi-weekly</option>
-          <option value="30">Monthly</option>
+          <option value="52">Weekly</option>
+          <option value="26">Bi-weekly</option>
+          <option value="12">Monthly</option>
         </select>
       </div>
       <div className="rowGroup">

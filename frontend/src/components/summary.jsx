@@ -11,12 +11,15 @@ function summary(props) {
 
     const mortgageTerm = mortgage*term
     console.log("props4", mortgageTerm)
+    const payments = paymentFrequency*term
+    console.log("props5", payments)
 
     // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1].
 
 //parseInt to avoid concatenation
 // const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
-const pay = mortgage* (parseInt(interestRate)*(Math.pow(1 + parseInt(interestRate), amortizationPeriod)))/5
+const pay = mortgage* (parseInt(interestRate)*(Math.pow(1 + parseInt(interestRate), payments)))/ (Math.pow(1 + parseInt(interestRate), payments) - 1)
+
 
     // function termPayments() {
     // //    return  mortgage*(interestRate(1 + interestRate)^amortizationPeriod) / ((1 + interestRate)^amortizationPeriod - 1)
@@ -53,7 +56,7 @@ const pay = mortgage* (parseInt(interestRate)*(Math.pow(1 + parseInt(interestRat
           <tr>
             <td>Number of Payments</td>
             <td>{mortgage}</td>
-            <td>{mortgageTerm}</td>
+            <td>{amortizationPeriod*paymentFrequency}</td>
           </tr>
 
           <tr>
