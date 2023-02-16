@@ -34,19 +34,11 @@ const InterestPaymentTerm = totalCostTerm - (numberofPaymentsforTerms/numberofPa
 const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)*100)/100
 
 
-// const InterestPaymentTerm = totalCostAmortizationPeriod - mortgage
-
-// const InterestPaymentTerm =  InterestPaymentTotal*
-// function termPayments() {
-    // //    return  mortgage*(interestRate(1 + interestRate)^amortizationPeriod) / ((1 + interestRate)^amortizationPeriod - 1)
-    // return mortgage*(interestRate(1 + interestRate))
-    // }
 
     console.log("duh", pay)
     console.log("duh2", interestRate)
     console.log("duh3", mortgage)
 
-    // console.log("chill", termPayments)
     // Here’s a breakdown of each of the variables:
 
     // M = Total monthly payment
