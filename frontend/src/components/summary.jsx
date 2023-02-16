@@ -19,11 +19,14 @@ function summary(props) {
     const amortizationPeriodPayments = amortizationPeriod*paymentFrequency
 
 
+
 //parseInt to avoid concatenation
 // const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
 // const pay = mortgage* (parseInt(rate)*(Math.pow(1 + parseInt(rate), payments)))/ (Math.pow(1 + parseInt(rate), payments) - 1)
-const pay = mortgage*rate*(Math.pow(1 + rate), payments)/ (Math.pow(1 + rate), payments) - 1
+const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), payments)/(Math.pow(1 + rate), payments) - 1)*100)/100
 
+const totalCostTerm = pay*(term*paymentFrequency)
+const totalCostAmortizationPeriod = pay*(amortizationPeriod*paymentFrequency)
     // function termPayments() {
     // //    return  mortgage*(interestRate(1 + interestRate)^amortizationPeriod) / ((1 + interestRate)^amortizationPeriod - 1)
     // return mortgage*(interestRate(1 + interestRate))
@@ -64,12 +67,12 @@ const pay = mortgage*rate*(Math.pow(1 + rate), payments)/ (Math.pow(1 + rate), p
 
           <tr>
             <td>Mortgage Payments</td>
-            <td>5</td>
-            <td>200</td>
+            <td>{pay}</td>
+            <td>{pay}</td>
           </tr>
 
           <tr>
-            <td>Prepayment</td>
+            <td>Principal Payments</td>
             <td>5</td>
             <td>200</td>
           </tr>
@@ -82,8 +85,8 @@ const pay = mortgage*rate*(Math.pow(1 + rate), payments)/ (Math.pow(1 + rate), p
 
           <tr>
             <td>Total Costs</td>
-            <td>5</td>
-            <td>200</td>
+            <td>{totalCostTerm}</td>
+            <td>{totalCostAmortizationPeriod}</td>
           </tr>
         </tbody>
       </table>
