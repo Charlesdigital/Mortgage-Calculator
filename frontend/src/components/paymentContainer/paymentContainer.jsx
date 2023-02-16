@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Summary from './summary';
+import Summary from '../summary';
+import "./paymentContainer.css";
 
 function PaymentContainer() {
 
@@ -102,7 +103,7 @@ function PaymentContainer() {
         Calculate
       </button> */}
 
-      <input type="submit" value="Calculate" />
+      <input className="submitButton" type="submit" value="Calculate" />
 
       </form>
       <Summary details={details} />

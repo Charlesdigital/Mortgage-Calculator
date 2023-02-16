@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import axios from "axios";
-import PaymentContainer from './components/paymentContainer.jsx';
+// import axios from "axios";
+import PaymentContainer from './components/paymentContainer/paymentContainer.jsx';
 import Summary from './components/summary.jsx';
 
 function App() {
