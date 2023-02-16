@@ -14,20 +14,27 @@ function summary(props) {
 
     const mortgageTerm = mortgage*term
     console.log("props4", mortgageTerm)
-    const payments = amortizationPeriod*paymentFrequency
-    console.log("props5", payments)
-    const amortizationPeriodPayments = amortizationPeriod*paymentFrequency
+    const numberofPaymentsforTerms = paymentFrequency*term
+    console.log("props5", numberofPaymentsforTerms)
+    const numberofPaymentsforAmortizationPeriod = amortizationPeriod*paymentFrequency
 
 
 
 //parseInt to avoid concatenation
 // const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
 // const pay = mortgage* (parseInt(rate)*(Math.pow(1 + parseInt(rate), payments)))/ (Math.pow(1 + parseInt(rate), payments) - 1)
-const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), payments)/(Math.pow(1 + rate), payments) - 1)*100)/100
+const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), numberofPaymentsforTerms)/(Math.pow(1 + rate), numberofPaymentsforTerms) - 1)*100)/100
 
 const totalCostTerm = pay*(term*paymentFrequency)
 const totalCostAmortizationPeriod = pay*(amortizationPeriod*paymentFrequency)
-    // function termPayments() {
+
+const InterestPaymentTerm = totalCostTerm - (numberofPaymentsforTerms/numberofPaymentsforAmortizationPeriod)
+
+const InterestPaymentTotal = totalCostAmortizationPeriod - mortgage
+const InterestPaymentTerm = totalCostAmortizationPeriod - mortgage
+
+// const InterestPaymentTerm =  InterestPaymentTotal*
+// function termPayments() {
     // //    return  mortgage*(interestRate(1 + interestRate)^amortizationPeriod) / ((1 + interestRate)^amortizationPeriod - 1)
     // return mortgage*(interestRate(1 + interestRate))
     // }
@@ -61,8 +68,8 @@ const totalCostAmortizationPeriod = pay*(amortizationPeriod*paymentFrequency)
         <tbody>
           <tr>
             <td>Number of Payments</td>
-            <td>{payments}</td>
-            <td>{amortizationPeriodPayments}</td>
+            <td>{numberofPaymentsforTerms}</td>
+            <td>{numberofPaymentsforAmortizationPeriod}</td>
           </tr>
 
           <tr>
@@ -74,13 +81,13 @@ const totalCostAmortizationPeriod = pay*(amortizationPeriod*paymentFrequency)
           <tr>
             <td>Principal Payments</td>
             <td>5</td>
-            <td>200</td>
+            <td>{mortgage}</td>
           </tr>
 
           <tr>
             <td>Interest Payments</td>
-            <td>5</td>
-            <td>200</td>
+            <td></td>
+            <td>{InterestPaymentTotal}</td>
           </tr>
 
           <tr>
