@@ -13,25 +13,28 @@ function summary(props) {
     console.log("props6", rate)
 
     const mortgageTerm = mortgage*term
-    console.log("props4", mortgageTerm)
     const numberofPaymentsforTerms = paymentFrequency*term
-    console.log("props5", numberofPaymentsforTerms)
-    const numberofPaymentsforAmortizationPeriod = amortizationPeriod*paymentFrequency
+    const numberofPaymentsforAmortizationPeriod = paymentFrequency*amortizationPeriod
 
 
 
 //parseInt to avoid concatenation
 // const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
 // const pay = mortgage* (parseInt(rate)*(Math.pow(1 + parseInt(rate), payments)))/ (Math.pow(1 + parseInt(rate), payments) - 1)
-const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), numberofPaymentsforTerms)/(Math.pow(1 + rate), numberofPaymentsforTerms) - 1)*100)/100
 
-const totalCostTerm = pay*(term*paymentFrequency)
-const totalCostAmortizationPeriod = pay*(amortizationPeriod*paymentFrequency)
+// const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), numberofPaymentsforTerms)/(Math.pow(1 + rate), numberofPaymentsforTerms) - 1)*100)/100
+
+const pay = Math.round(mortgage*rate*((1 + rate)**numberofPaymentsforAmortizationPeriod)/ ((1 + rate)**numberofPaymentsforAmortizationPeriod - 1)*100)/100
+
+const totalCostTerm =  Math.round(pay*(term*paymentFrequency)*100)/100
+const totalCostAmortizationPeriod = Math.round((pay*numberofPaymentsforAmortizationPeriod)*100)/100
 
 const InterestPaymentTerm = totalCostTerm - (numberofPaymentsforTerms/numberofPaymentsforAmortizationPeriod)
 
-const InterestPaymentTotal = totalCostAmortizationPeriod - mortgage
-const InterestPaymentTerm = totalCostAmortizationPeriod - mortgage
+const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)*100)/100
+
+
+// const InterestPaymentTerm = totalCostAmortizationPeriod - mortgage
 
 // const InterestPaymentTerm =  InterestPaymentTotal*
 // function termPayments() {
