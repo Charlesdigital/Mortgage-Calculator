@@ -11,10 +11,6 @@ function PaymentContainer() {
     term: "",
   });
 
-  function calculate() {
-    // setInterest(7)
-    return 1;
-  }
 
   const handleChange = (e) => {
     //grab the name and input value
