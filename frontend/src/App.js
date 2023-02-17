@@ -1,29 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 // import axios from "axios";
-import PaymentContainer from './components/paymentContainer/paymentContainer.jsx';
-import Summary from './components/summary.jsx';
+import PaymentContainer from "./components/paymentContainer/paymentContainer.jsx";
+import Summary from "./components/summary/summary.jsx";
 
 function App() {
-
-
-
   return (
-
     <div className="App">
       <PaymentContainer />
     </div>
   );
-  }
+}
 
 export default App;
 
 // Mortgage Calculator
 
-
-
 // Check your monthly payment with a Fixed Rate
-
 
 // Value of the home
 
@@ -33,8 +26,6 @@ export default App;
 
 // Term
 
-
 // Downpayment
-
 
 // Monthly Payments

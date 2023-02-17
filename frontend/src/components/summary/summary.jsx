@@ -1,9 +1,8 @@
 import React from "react";
+import "./summary.css";
 
 function summary(props) {
 
-    console.log("props", props)
-    console.log("props2", props.details.mortgage)
 
 
     const {mortgage, interestRate, amortizationPeriod, paymentFrequency, term} = props.details;
@@ -34,7 +33,6 @@ const InterestPaymentTerm = totalCostTerm - (numberofPaymentsforTerms/numberofPa
 const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)*100)/100
 
 
-
     console.log("duh", pay)
     console.log("duh2", interestRate)
     console.log("duh3", mortgage)
@@ -50,7 +48,7 @@ const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)
 
 
   return (
-    <div>
+    <div className="modal">
       <table className='summaryTable'>
         <caption>Calculation Summary</caption>
         <thread>
