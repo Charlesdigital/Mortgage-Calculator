@@ -113,7 +113,9 @@ function PaymentContainer() {
         Calculate
       </button> */}
 
-        <input className="submitButton" type="submit" value="Calculate" />
+        <button className="submitButton" type="submit" value="Calculate" >
+          Submit
+        </button>
       </form>
       <Summary details={details} />
     </div>
