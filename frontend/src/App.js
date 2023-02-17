@@ -3,10 +3,14 @@ import "./App.css";
 // import axios from "axios";
 import PaymentContainer from "./components/paymentContainer/paymentContainer.jsx";
 import Summary from "./components/summary/summary.jsx";
+import house from "./assets/house.svg"
 
 function App() {
   return (
     <div className="App">
+      {/* <img className="Charles" src = {house} alt="Home" /> */}
+      <img className="house" src = {house} alt="Home" />
+
       <PaymentContainer />
     </div>
   );

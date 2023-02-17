@@ -2,6 +2,7 @@ import { useState } from "react";
 import Summary from "../summary/summary.jsx";
 import "./paymentContainer.css";
 
+
 function PaymentContainer() {
   const [details, setDetails] = useState({
     mortgage: "",
@@ -10,6 +11,12 @@ function PaymentContainer() {
     paymentFrequency: "",
     term: "",
   });
+
+    // const [modal, setModal] = useState(false);
+
+  // const toggleModal = () => {
+  //   setModal(!modal)
+  // }
 
   const handleChange = (e) => {
     //grab the name and input value

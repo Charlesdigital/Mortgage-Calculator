@@ -1,5 +1,5 @@
 import React from "react";
-import "./summary.css";
+// import "./summary.css";
 
 function summary(props) {
 
@@ -49,7 +49,7 @@ const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)
 
   return (
     <div className="modal">
-      <table className='summaryTable'>
+      <table className='modal-content'>
         <caption>Calculation Summary</caption>
         <thread>
           <tr>
