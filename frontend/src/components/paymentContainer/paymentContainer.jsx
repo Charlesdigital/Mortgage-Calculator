@@ -12,11 +12,13 @@ function PaymentContainer() {
     term: "",
   });
 
-    // const [modal, setModal] = useState(false);
+    const [modal, setModal] = useState(false);
 
-  // const toggleModal = () => {
-  //   setModal(!modal)
-  // }
+  const toggleModal = () => {
+    console.log("hello2")
+    setModal(!modal)
+    console.log("test67",modal)
+  }
 
   const handleChange = (e) => {
     //grab the name and input value
@@ -113,11 +115,11 @@ function PaymentContainer() {
         Calculate
       </button> */}
 
-        <button className="submitButton" type="submit" value="Calculate" >
+        <button className="submitButton" type="submit" value="Calculate" onClick={toggleModal}>
           Submit
         </button>
       </form>
-      <Summary details={details} />
+      <Summary details={details} modal={modal} toggleModal= {toggleModal}/>
     </div>
   );
 }

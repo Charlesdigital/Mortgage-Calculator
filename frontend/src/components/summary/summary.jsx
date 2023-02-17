@@ -1,7 +1,7 @@
-import React from "react";
-// import "./summary.css";
+import { useState } from "react";
+import "./summary.css";
 
-function summary(props) {
+function Summary(props) {
 
 
 
@@ -44,12 +44,24 @@ const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)
     // I = Your interest rate, as a monthly percentage
     // N = The total amount of months in your timeline for paying off your mortgage
 
+    // const [modal, setModal] = useState(false);
 
+  // const toggleModal = () => {
+  //   console.log("hello")
+  //   setModal(!modal)
+  // }
 
 
   return (
+    <>
+    {props.modal && (
     <div className="modal">
+      <div classNAme="overlay">
+
       <table className='modal-content'>
+      <button className="close-modal" onClick={props.toggleModal}>
+        X
+      </button>
         <caption>Calculation Summary</caption>
         <thread>
           <tr>
@@ -89,9 +101,16 @@ const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)
             <td>{totalCostAmortizationPeriod}</td>
           </tr>
         </tbody>
+
       </table>
+
+      </div>
     </div>
+      )}
+    </>
+
   );
+
 }
 
-export default summary;
+export default Summary;
