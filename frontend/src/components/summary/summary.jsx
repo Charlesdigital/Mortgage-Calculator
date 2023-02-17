@@ -32,6 +32,7 @@ const InterestPaymentTerm = totalCostTerm - (numberofPaymentsforTerms/numberofPa
 
 const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)*100)/100
 
+const mortgageAmount = parseInt(mortgage)
 
     console.log("duh", pay)
     console.log("duh2", interestRate)
@@ -59,46 +60,45 @@ const InterestPaymentTotal = Math.round((totalCostAmortizationPeriod - mortgage)
       <div classNAme="overlay">
 
       <table className='modal-content'>
-      <button className="close-modal" onClick={props.toggleModal}>
+
+        <caption className="calc-title">Calculation Summary</caption>
+        <button className="close-modal" onClick={props.toggleModal}>
         X
       </button>
-        <caption>Calculation Summary</caption>
-        <thread>
           <tr>
-            <th >Category</th>
+            <th>Category</th>
             <th>Term</th>
             <th>Amortization Period</th>
           </tr>
-        </thread>
         <tbody>
           <tr>
             <td>Number of Payments</td>
-            <td>{numberofPaymentsforTerms}</td>
-            <td>{numberofPaymentsforAmortizationPeriod}</td>
+            <td>{numberofPaymentsforTerms.toLocaleString()}</td>
+            <td>{numberofPaymentsforAmortizationPeriod.toLocaleString()}</td>
           </tr>
 
           <tr>
             <td>Mortgage Payments</td>
-            <td>{pay}</td>
-            <td>{pay}</td>
+            <td>${pay.toLocaleString()}</td>
+            <td>${pay.toLocaleString()}</td>
           </tr>
 
           <tr>
             <td>Principal Payments</td>
-            <td>5</td>
-            <td>{mortgage}</td>
+            <td>$5</td>
+            <td>${mortgageAmount.toLocaleString()}</td>
           </tr>
 
           <tr>
             <td>Interest Payments</td>
-            <td></td>
-            <td>{InterestPaymentTotal}</td>
+            <td>$</td>
+            <td>${InterestPaymentTotal.toLocaleString()}</td>
           </tr>
 
           <tr>
             <td>Total Costs</td>
-            <td>{totalCostTerm}</td>
-            <td>{totalCostAmortizationPeriod}</td>
+            <td>${totalCostTerm.toLocaleString()}</td>
+            <td>${totalCostAmortizationPeriod.toLocaleString()}</td>
           </tr>
         </tbody>
 
