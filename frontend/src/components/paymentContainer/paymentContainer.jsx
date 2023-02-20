@@ -25,8 +25,6 @@ function PaymentContainer() {
     const name = e.target.name;
     const value = e.target.value;
 
-    console.log("af234234234", name, value);
-
     setDetails((prev) => {
       return { ...prev, [name]: value };
     });
