@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./summary.css";
 
 function Summary(props) {
-
-
 
     const {mortgage, interestRate, amortizationPeriod, paymentFrequency, term} = props.details;
 
@@ -11,17 +8,9 @@ function Summary(props) {
     const rate = (interestRate/100)/paymentFrequency
     console.log("props6", rate)
 
-    const mortgageTerm = mortgage*term
     const numberofPaymentsforTerms = paymentFrequency*term
     const numberofPaymentsforAmortizationPeriod = paymentFrequency*amortizationPeriod
 
-
-
-//parseInt to avoid concatenation
-// const pay = mortgage* (parseInt(interestRate)*(1 + parseInt(interestRate))^amortizationPeriod)
-// const pay = mortgage* (parseInt(rate)*(Math.pow(1 + parseInt(rate), payments)))/ (Math.pow(1 + parseInt(rate), payments) - 1)
-
-// const pay = Math.round((mortgage*rate*(Math.pow(1 + rate), numberofPaymentsforTerms)/(Math.pow(1 + rate), numberofPaymentsforTerms) - 1)*100)/100
 
 const pay = Math.round(mortgage*rate*((1 + rate)**numberofPaymentsforAmortizationPeriod)/ ((1 + rate)**numberofPaymentsforAmortizationPeriod - 1)*100)/100
 
@@ -44,13 +33,6 @@ const mortgageAmount = parseInt(mortgage)
     // P = The total amount of your loan
     // I = Your interest rate, as a monthly percentage
     // N = The total amount of months in your timeline for paying off your mortgage
-
-    // const [modal, setModal] = useState(false);
-
-  // const toggleModal = () => {
-  //   console.log("hello")
-  //   setModal(!modal)
-  // }
 
 
   return (

@@ -35,7 +35,6 @@ function PaymentContainer() {
   const handleSubmit = (e) => {
     //to avoid rerendering the whole page
     e.preventDefault();
-    // console.log("after2", details);
   };
   console.log("test1", details.mortgage);
 
@@ -119,13 +118,6 @@ function PaymentContainer() {
             <option value="20">20 Years</option>
           </select>{" "}
         </div>
-        {/* <button
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        Calculate
-      </button> */}
 
         <button className="submitButton" type="submit" value="Calculate" onClick={toggleModal}>
           Submit
