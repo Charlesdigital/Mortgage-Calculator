@@ -15,7 +15,9 @@ function PaymentContainer() {
     const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
-    console.log("hello2")
+    if (details.mortgage === "" || details.interestRate === "" || details.amortizationPeriod === "" || details.paymentFrequency === "" || details.term === "" ) {
+      return null;
+    }
     setModal(!modal)
     console.log("test67",modal)
   }
@@ -35,13 +37,6 @@ function PaymentContainer() {
     e.preventDefault();
   };
   console.log("test1", details.mortgage);
-
-  //things to do:\
-  //add down payment
-  //1. Terms
-  //2. Amortization Period
-  //3. Mortgage Payment
-  //4 PrePayment
 
   return (
     <div>
