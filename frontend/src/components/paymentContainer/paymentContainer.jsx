@@ -15,6 +15,7 @@ function PaymentContainer() {
     const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
+    //condition to only submit form if all input fields are filled
     if (details.mortgage === "" || details.interestRate === "" || details.amortizationPeriod === "" || details.paymentFrequency === "" || details.term === "" ) {
       return null;
     }
