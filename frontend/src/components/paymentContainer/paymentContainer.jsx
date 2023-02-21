@@ -2,7 +2,6 @@ import { useState } from "react";
 import Summary from "../summary/summary.jsx";
 import "./paymentContainer.css";
 
-
 function PaymentContainer() {
   const [details, setDetails] = useState({
     mortgage: "",
@@ -12,16 +11,21 @@ function PaymentContainer() {
     term: "",
   });
 
-    const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
     //condition to only submit form if all input fields are filled
-    if (details.mortgage === "" || details.interestRate === "" || details.amortizationPeriod === "" || details.paymentFrequency === "" || details.term === "" ) {
+    if (
+      details.mortgage === "" ||
+      details.interestRate === "" ||
+      details.amortizationPeriod === "" ||
+      details.paymentFrequency === "" ||
+      details.term === ""
+    ) {
       return null;
     }
-    setModal(!modal)
-    console.log("test67",modal)
-  }
+    setModal(!modal);
+  };
 
   const handleChange = (e) => {
     //grab the name and input value
@@ -37,7 +41,6 @@ function PaymentContainer() {
     //to avoid rerendering the whole page
     e.preventDefault();
   };
-  console.log("test1", details.mortgage);
 
   return (
     <div>
@@ -46,19 +49,24 @@ function PaymentContainer() {
         <div className="rowGroup">
           <label className="MortgageAmount">Mortgage Amount</label>
           <span className="icon">$</span>
-          <div title="Add the mortgage you need to pay">?</div>
+          <div className="inline">
+            <span className="question" title="Add the mortgage you need to pay">?</span>
 
-          <input
-            type="number"
-            min="1"
-            name="mortgage"
-            onChange={handleChange}
-            required
-          ></input>
+            <input
+              type="number"
+              min="1"
+              name="mortgage"
+              onChange={handleChange}
+              required
+            ></input>
+          </div>
         </div>
         <div className="rowGroup">
           <label className="InterestRate">Interest Rate</label>
           <span className="icon">%</span>
+          <div className="inline">
+            <span className="question" title="Add the interest rate quoted from your bank">?</span>
+
           <input
             type="number"
             max="100"
@@ -66,9 +74,13 @@ function PaymentContainer() {
             onChange={handleChange}
             required
           ></input>
+          </div>
         </div>
         <div className="rowGroup">
           <label className="AmortizationPeriod">Amortization Period</label>
+          <div className="inline">
+            <span className="question" title="Add the length of time it takes to pay off a mortgage in full in years">?</span>
+
           <input
             type="number"
             name="amortizationPeriod"
@@ -76,18 +88,24 @@ function PaymentContainer() {
             onChange={handleChange}
             required
           ></input>
+          </div>
         </div>
         <div className="rowGroup">
           <label className="payFrequency">Payment Frequency</label>
-          <select name="paymentFrequency" min="1" onChange={handleChange}>
+          <div className="inline">
+            <span className="question question2" title="Add how often you will make a payment">?</span>
+          <select className="fieldBox" name="paymentFrequency" min="1" onChange={handleChange}>
             <option value="0"></option>
             <option value="52">Weekly</option>
             <option value="26">Bi-weekly</option>
             <option value="12">Monthly</option>
           </select>
+          </div>
         </div>
         <div className="rowGroup">
           <label className="Term">Term</label>
+          <div className="inline">
+            <span className="question " title="The length of the mortgage term from your bank">?</span>
           <select name="term" onChange={handleChange}>
             <option value="0"></option>
             <option value="1 ">1 Year</option>
@@ -111,13 +129,19 @@ function PaymentContainer() {
             <option value="19">19 Years</option>
             <option value="20">20 Years</option>
           </select>{" "}
+          </div>
         </div>
 
-        <button className="submitButton" type="submit" value="Calculate" onClick={toggleModal}>
+        <button
+          className="submitButton"
+          type="submit"
+          value="Calculate"
+          onClick={toggleModal}
+        >
           Submit
         </button>
       </form>
-      <Summary details={details} modal={modal} toggleModal= {toggleModal}/>
+      <Summary details={details} modal={modal} toggleModal={toggleModal} />
     </div>
   );
 }

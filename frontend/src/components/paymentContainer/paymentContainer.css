@@ -41,9 +41,24 @@ h1 {
 
 
   .submitButton {
-    background-color: #6976d9;
     font-family: sans-serif;
     font-size: 14px;
     margin: 20px 0px;
   }
 
+.inline {
+  display: flex;
+
+
+}
+
+.question {
+  padding: 10px;
+  color: red;
+
+}
+
+.fieldBox {
+  display: flex;
+justify-content: center;
+}
