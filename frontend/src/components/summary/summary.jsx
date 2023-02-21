@@ -24,12 +24,13 @@ function Summary(props) {
     Math.round(pay * numberofPaymentsforAmortizationPeriod * 100) / 100;
 
 
-    // B = A(1+r)^n - P*(1+r)^(n-1)
-    const InterestPaymentTerm =  Math.round(
-      ((mortgage * (1 + rate) ** numberofPaymentsforAmortizationPeriod) /
-        ((1 + rate) ** numberofPaymentsforAmortizationPeriod - 1)) *
-        100
-    ) / 100;
+    // // B = A(1+r)^n - P*(1+r)^(n-1)
+    // const InterestPaymentTerm =  Math.round(
+    //   ((mortgage * (1 + rate) ** numberofPaymentsforAmortizationPeriod) -
+    //     (pay * (1 + rate) ** (numberofPaymentsforAmortizationPeriod - 1))) *
+    //     100
+    // ) / 100;
+
 
   // const InterestPaymentTerm =
   //   totalCostTerm -
@@ -39,6 +40,10 @@ function Summary(props) {
     Math.round((totalCostAmortizationPeriod - mortgage) * 100) / 100;
 
   const mortgageAmount = parseInt(mortgage);
+
+  const InterestPaymentTerm = Math.round((InterestPaymentTotal/totalCostAmortizationPeriod)*totalCostTerm)
+
+  const prinpicalTerm = Math.round((mortgage/totalCostAmortizationPeriod)*totalCostTerm)
 
   console.log("duh", pay);
   console.log("duh2", interestRate);
@@ -83,13 +88,13 @@ function Summary(props) {
 
                 <tr>
                   <td>Principal Payments</td>
-                  <td>{InterestPaymentTerm.toLocaleString()}</td>
+                  <td>{prinpicalTerm.toLocaleString()}</td>
                   <td>${mortgageAmount.toLocaleString()}</td>
                 </tr>
 
                 <tr>
                   <td>Interest Payments</td>
-                  <td>$</td>
+                  <td>${InterestPaymentTerm.toLocaleString()}</td>
                   <td>${InterestPaymentTotal.toLocaleString()}</td>
                 </tr>
 
