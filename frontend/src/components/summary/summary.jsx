@@ -19,16 +19,21 @@ function Summary(props) {
     ) / 100;
 
   const totalCostTerm = Math.round(pay * (term * paymentFrequency) * 100) / 100;
-  const totalCostAmortizationPeriod = Math.round(pay * numberofPaymentsforAmortizationPeriod * 100) / 100;
+  const totalCostAmortizationPeriod =
+    Math.round(pay * numberofPaymentsforAmortizationPeriod * 100) / 100;
 
   const interestPaymentTotal =
     Math.round((totalCostAmortizationPeriod - mortgage) * 100) / 100;
 
   const mortgageAmount = parseInt(mortgage);
 
-  const interestPaymentTerm = Math.round((interestPaymentTotal/totalCostAmortizationPeriod)*totalCostTerm)
+  const interestPaymentTerm = Math.round(
+    (interestPaymentTotal / totalCostAmortizationPeriod) * totalCostTerm
+  );
 
-  const principalTerm = Math.round((mortgage/totalCostAmortizationPeriod)*totalCostTerm)
+  const principalTerm = Math.round(
+    (mortgage / totalCostAmortizationPeriod) * totalCostTerm
+  );
 
   return (
     <>
