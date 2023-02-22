@@ -15,6 +15,9 @@ function PaymentContainer() {
 
   const toggleModal = () => {
     //condition to only submit form if all input fields are filled
+    if(details.interestRate > 100) {
+      return null;
+    }
     if (
       details.mortgage === "" ||
       details.interestRate === "" ||
@@ -69,7 +72,7 @@ function PaymentContainer() {
           <div className="inline">
             <span
               className="question"
-              title="Add the interest rate quoted from your bank"
+              title="Add the interest rate quoted from your bank. Must be equal or less than 100% "
             >
               ?
             </span>

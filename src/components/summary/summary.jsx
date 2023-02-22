@@ -67,7 +67,7 @@ function Summary(props) {
 
                 <tr>
                   <td>Principal Payments</td>
-                  <td>{principalTerm.toLocaleString()}</td>
+                  <td>${principalTerm.toLocaleString()}</td>
                   <td>${mortgageAmount.toLocaleString()}</td>
                 </tr>
 
