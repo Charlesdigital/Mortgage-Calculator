@@ -1,8 +1,8 @@
 
 # Mortgage-Calculator
 
-# About 
-A frontend react application to calculate mortgage monthly payments. 
+# About
+A front end application with form validation that calculates mortgage, interest and principal payments for the during of the term.
 
 https://mortgagecalculatorbreakdown.netlify.app/
 
